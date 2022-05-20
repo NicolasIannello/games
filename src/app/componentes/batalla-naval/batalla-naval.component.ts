@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./batalla-naval.component.css']
 })
 export class BatallaNavalComponent implements OnInit {
-  hola:string='a';
+  hola:string='aa';
 
   constructor() { 
   }

@@ -1,0 +1,15 @@
+.titulo{
+    margin-left: 50%;
+    margin-top: 2%;
+    font-size: 3rem;
+}
+.juego{
+    background-color: black;
+    color: aliceblue;
+    height: 15rem;
+    width: 15rem;
+    cursor: pointer;
+}
+.col-sm{
+    margin: 1%;
+}

@@ -1,21 +1,63 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Pusher from 'pusher-js';
+import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-juegos',
-  templateUrl: './juegos.component.html',
-  styleUrls: ['./juegos.component.css']
+	selector: 'app-juegos',
+	templateUrl: './juegos.component.html',
+	styleUrls: ['./juegos.component.css']
 })
+
 export class JuegosComponent implements OnInit {
+	juegos:Array<string>=['BatallaNaval','Soon!','Soon!','Soon!','Soon!','Soon!','Soon!'];
+	apodo:string='';
+	id:string='';
 
-  constructor(private router: Router) { }
+	constructor(private router: Router) { }
 
-  ngOnInit(): void {
+	ngOnInit(): void {
+		localStorage.clear();
+	}
 
-  }
+	jugar(juego:string){
+		if(juego!='Soon!'){
 
-  juego(juego:any){
-    this.router.navigate(['/'+juego]);
-  }
+		if (this.apodo=='') {
+			alert('Ingrese un apodo');
+		}else{
+			localStorage.setItem('Apodo',this.apodo);
+			this.id=(Math.random()*10).toString();
+			localStorage.setItem('id',this.id)
+
+			const pusher = new Pusher(environment.key, {
+				authEndpoint: 'http://localhost:3000/pusher/auth',
+				cluster: 'sa1'
+			});
+		
+			const channel = pusher.subscribe('presence-'+juego);
+
+			channel.bind('client-buscando', (data:any) => {
+				//console.log(data);
+				if(data.nombre){
+					channel.trigger('client-buscando',{ jugador1: this.apodo, jugador2: data.nombre, j2id: data.id, partida: this.id+data.id });
+					localStorage.setItem('partida',this.id+data.id);
+					localStorage.setItem('juego',juego);
+					this.router.navigate(['/'+juego]);
+				}else if(data.j2id==this.id){
+					localStorage.setItem('partida',data.partida);
+					localStorage.setItem('juego',juego);
+					this.router.navigate(['/'+juego]);
+				}
+			});
+			
+			
+			setTimeout(() => {
+				channel.trigger('client-buscando',{ nombre: this.apodo, id: this.id });
+			},3000);
+			
+			}
+		}  
+	}
 
 }

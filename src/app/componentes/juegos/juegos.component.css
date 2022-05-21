@@ -13,3 +13,12 @@
 .col-sm{
     margin: 1%;
 }
+.container{
+    max-width: 1380px;
+}
+@media (max-width: 1200px) {
+    .container {
+        max-width: 1140px;
+        margin-left: 16%;
+    }
+}

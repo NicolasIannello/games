@@ -4,13 +4,21 @@
 
 <div class="dato">
     <span>Ingrese un apodo</span>
-    <input type="text"> 
+    <input type="text" [(ngModel)]="apodo">
 </div>
 
-<div class="container">
-    <div class="row">
+<div class="container table-wrapper-scroll-y">
+    <span *ngFor="let juego of juegos">
+      <button class="col-sm juego" (click)="jugar(juego)">
+        <span id="nom{{juego}}">{{juego}}</span><span id="sp{{juego}}" class=""></span>
+      </button>
+    </span>
+    <!--<div class="row">
+      <div *ngFor="let juego of juegos" class="col-sm juego" (click)="jugar(juego)">
+        <span id="nom{{juego}}">{{juego}}</span><span id="sp{{juego}}" class=""></span>
+      </div>
       <div class="col-sm juego" (click)="juego('BatallaNaval')">
-        Battalla Naval
+        <span id="nomBatallaNaval">BatallaNaval</span><span id="spBatallaNaval" class="spinner-border"></span>
       </div>
       <div class="col-sm juego">
         Soon!
@@ -21,5 +29,5 @@
       <div class="col-sm juego">
         Soon!
       </div>
-    </div>
-  </div>
+    </div>-->
+</div>

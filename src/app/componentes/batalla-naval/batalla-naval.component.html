@@ -1,4 +1,14 @@
-<p>batalla-naval works!</p>
-<button (click)="send()">h</button>
+<div class="titulo">
+    <span>Batalla Naval</span>
+</div>
 
-<span>{{hola}}</span>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <app-tablero-jugador (Listo)="actualizarEstado($event)"></app-tablero-jugador>
+        </div>
+        <div class="col-sm">
+            <app-tablero-oponente [Listo]="Listo"></app-tablero-oponente>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Pusher from 'pusher-js';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-batalla-naval',
@@ -8,25 +6,15 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./batalla-naval.component.css']
 })
 export class BatallaNavalComponent implements OnInit {
-  hola:string='aa';
+  Listo:boolean=false;
 
   constructor() { 
   }
   
   ngOnInit(): void {
-    const pusher = new Pusher(environment.key, {
-      cluster: 'sa1'
-    });
-
-    const channel = pusher.subscribe('my-channel');
-
-    channel.bind('my-event', (data:any) => {
-      this.hola+=data;
-    });
-    
   }
-  
-  send(){
-    this.hola+='a';
+
+  actualizarEstado($event:any){
+    this.Listo=$event
   }
 }

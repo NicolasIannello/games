@@ -1,0 +1,51 @@
+
+<div class="container">
+    <div class="jugador">{{nombreJugador}}</div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">G</div>
+            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroG" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">F</div>
+            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroF" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">E</div>
+            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroE" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">D</div>
+            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroD" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">C</div>
+            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroC" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">B</div>
+            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroB" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">A</div>
+            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroA" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">-</div><div class="num">1</div><div class="num">2</div><div class="num">3</div><div class="num">4</div><div class="num">5</div><div class="num">6</div><div class="num">7</div>
+        </div>
+    </div>
+</div>

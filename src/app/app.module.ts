@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JuegosComponent } from './componentes/juegos/juegos.component';
 import { BatallaNavalComponent } from './componentes/batalla-naval/batalla-naval.component';
+import { TableroJugadorComponent } from './componentes/batalla-naval/tablero-jugador/tablero-jugador.component';
+import { TableroOponenteComponent } from './componentes/batalla-naval/tablero-oponente/tablero-oponente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JuegosComponent,
-    BatallaNavalComponent
+    BatallaNavalComponent,
+    TableroJugadorComponent,
+    TableroOponenteComponent
   ],
   imports: [
     BrowserModule,

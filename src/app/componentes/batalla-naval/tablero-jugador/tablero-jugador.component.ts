@@ -1,4 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import Pusher from 'pusher-js';
+import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tablero-jugador',
@@ -6,89 +9,76 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./tablero-jugador.component.css']
 })
 export class TableroJugadorComponent implements OnInit {
-  JtableroA:Array<{x:string, y:string, barco:boolean, hit:boolean, class:string, boton:boolean}>=[{ x:'A', y:'1', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'A', y:'2', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'A', y:'3', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'A', y:'4', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'A', y:'5', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'A', y:'6', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'A', y:'7', barco:false, hit:false, class:"botonTablero", boton:false }]
-  JtableroB:Array<{x:string, y:string, barco:boolean, hit:boolean, class:string, boton:boolean}>=[{ x:'B', y:'1', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'B', y:'2', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'B', y:'3', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'B', y:'4', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'B', y:'5', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'B', y:'6', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'B', y:'7', barco:false, hit:false, class:"botonTablero", boton:false }]
-  JtableroC:Array<{x:string, y:string, barco:boolean, hit:boolean, class:string, boton:boolean}>=[{ x:'C', y:'1', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'C', y:'2', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'C', y:'3', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'C', y:'4', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'C', y:'5', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'C', y:'6', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'C', y:'7', barco:false, hit:false, class:"botonTablero", boton:false }]
-  JtableroD:Array<{x:string, y:string, barco:boolean, hit:boolean, class:string, boton:boolean}>=[{ x:'D', y:'1', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'D', y:'2', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'D', y:'3', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'D', y:'4', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'D', y:'5', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'D', y:'6', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'D', y:'7', barco:false, hit:false, class:"botonTablero", boton:false }]
-  JtableroE:Array<{x:string, y:string, barco:boolean, hit:boolean, class:string, boton:boolean}>=[{ x:'E', y:'1', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'E', y:'2', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'E', y:'3', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'E', y:'4', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'E', y:'5', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'E', y:'6', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'E', y:'7', barco:false, hit:false, class:"botonTablero", boton:false }]
-  JtableroF:Array<{x:string, y:string, barco:boolean, hit:boolean, class:string, boton:boolean}>=[{ x:'F', y:'1', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'F', y:'2', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'F', y:'3', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'F', y:'4', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'F', y:'5', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'F', y:'6', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'F', y:'7', barco:false, hit:false, class:"botonTablero", boton:false }]
-  JtableroG:Array<{x:string, y:string, barco:boolean, hit:boolean, class:string, boton:boolean}>=[{ x:'G', y:'1', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'G', y:'2', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'G', y:'3', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'G', y:'4', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'G', y:'5', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'G', y:'6', barco:false, hit:false, class:"botonTablero", boton:false },{ x:'G', y:'7', barco:false, hit:false, class:"botonTablero", boton:false }]
-  
-  nombreJugador:string="nombre";
+  tablero:Array<{x:string, y:string, barco:boolean, hit:boolean, class:string, boton:boolean}>=[];
+  letras:Array<string>=['A','B','C','D','E','F','G'];
+
+  nombreJugador:string|null="nombre";
   turno:boolean=false;
-  piezas:number=15;
+  piezas:number=3;
   piezaAnterior:Array<{x:string, y:string}>=[{x:'', y:''}];
   @Output() Listo = new EventEmitter<any>();
   ready:boolean=false;
+  flag:boolean=false;
 
-  constructor() { }
+  pusher:Pusher=new Pusher(environment.key, {
+    authEndpoint: 'http://localhost:3000/pusher/auth',
+    cluster: 'sa1'
+  });
+  channel:any = this.pusher.subscribe('presence-'+localStorage.getItem('partida'));
+
+  @Input() set posiciones(value:Array<string>) {    
+    if(this.flag==true){
+
+      this.tablero.forEach(element => {
+        if(element.x==value[0] && element.y==value[1]){
+          if(element.barco==true){
+            element.hit=true;
+            element.class+=' hit'
+            this.piezas++;
+          }else{
+            element.class+=' miss'
+          }
+          this.channel.trigger('client-'+localStorage.getItem('partida'),{ jugador:localStorage.getItem('Apodo'), disparo:element.barco, px:value[0], py:value[1]});          
+        }
+        if(this.piezas==3){
+          this.channel.trigger('client-'+localStorage.getItem('partida'),{ jugador:localStorage.getItem('Apodo'), fin:'ganaste'}); 
+          alert('Perdiste');
+          this.router.navigate(['/']);
+        }
+      });
+      
+    }else{
+      this.flag=true;
+    }
+  }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    
+    this.nombreJugador=localStorage.getItem('Apodo');
+
+    for (let i = 0; i < 7; i++) {
+      for (let j = 0; j < 7; j++) {
+        var casillero={x:this.letras[i], y:(j+1).toString(), barco:false, hit:false, class:'botonTablero', boton:false};
+        this.tablero.push(casillero);
+      }
+    }
   }
 
   ponerPieza(x:string, y:string){
      
-    switch (x) {
-      case 'A': 
-        this.JtableroA[parseInt(y)-1].class="pieza";
-        this.JtableroA[parseInt(y)-1].barco=true;
-        this.JtableroA[parseInt(y)-1].boton=true; 
-        break;
-      case 'B': 
-        this.JtableroB[parseInt(y)-1].class="pieza";
-        this.JtableroB[parseInt(y)-1].barco=true;
-        this.JtableroB[parseInt(y)-1].boton=true; 
-        break;
-      case 'C': 
-        this.JtableroC[parseInt(y)-1].class="pieza";
-        this.JtableroC[parseInt(y)-1].barco=true;
-        this.JtableroC[parseInt(y)-1].boton=true; 
-        break;
-      case 'D': 
-        this.JtableroD[parseInt(y)-1].class="pieza";
-        this.JtableroD[parseInt(y)-1].barco=true;
-        this.JtableroD[parseInt(y)-1].boton=true; 
-        break;
-      case 'E': 
-        this.JtableroE[parseInt(y)-1].class="pieza";
-        this.JtableroE[parseInt(y)-1].barco=true;
-        this.JtableroE[parseInt(y)-1].boton=true; 
-        break;
-      case 'F': 
-        this.JtableroF[parseInt(y)-1].class="pieza";
-        this.JtableroF[parseInt(y)-1].barco=true;
-        this.JtableroF[parseInt(y)-1].boton=true; 
-        break;
-      case 'G': 
-        this.JtableroG[parseInt(y)-1].class="pieza";
-        this.JtableroG[parseInt(y)-1].barco=true;
-        this.JtableroG[parseInt(y)-1].boton=true; 
-        break;
-    }
+    this.tablero.forEach(element => {
+      if(element.x==x && element.y==y){
+        element.boton=true;
+        element.barco=true;
+        element.class="pieza";
+      }
+    });
 
     this.piezas--;
 
     if (this.piezas==0) {
-      this.JtableroA.forEach(element => {
-        element.boton=true;
-      });
-      this.JtableroB.forEach(element => {
-        element.boton=true;
-      });
-      this.JtableroC.forEach(element => {
-        element.boton=true;
-      });
-      this.JtableroD.forEach(element => {
-        element.boton=true;
-      });
-      this.JtableroE.forEach(element => {
-        element.boton=true;
-      });
-      this.JtableroF.forEach(element => {
-        element.boton=true;
-      });
-      this.JtableroG.forEach(element => {
+      this.tablero.forEach(element => {
         element.boton=true;
       });
 

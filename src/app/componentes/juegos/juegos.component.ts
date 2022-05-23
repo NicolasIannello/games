@@ -27,7 +27,7 @@ export class JuegosComponent implements OnInit {
 			alert('Ingrese un apodo');
 		}else{
 			localStorage.setItem('Apodo',this.apodo);
-			this.id=(Math.random()*10).toString();
+			this.id=(Math.floor(Math.random()*(5000-1000)+1000)).toString();
 			localStorage.setItem('id',this.id)
 
 			const pusher = new Pusher(environment.key, {
@@ -43,10 +43,14 @@ export class JuegosComponent implements OnInit {
 					channel.trigger('client-buscando',{ jugador1: this.apodo, jugador2: data.nombre, j2id: data.id, partida: this.id+data.id });
 					localStorage.setItem('partida',this.id+data.id);
 					localStorage.setItem('juego',juego);
+					localStorage.setItem('oponente',data.nombre);
+					localStorage.setItem('turno','true');
 					this.router.navigate(['/'+juego]);
 				}else if(data.j2id==this.id){
 					localStorage.setItem('partida',data.partida);
 					localStorage.setItem('juego',juego);
+					localStorage.setItem('oponente',data.jugador1);
+					localStorage.setItem('turno','false');
 					this.router.navigate(['/'+juego]);
 				}
 			});

@@ -14,7 +14,7 @@ export class TableroJugadorComponent implements OnInit {
 
   nombreJugador:string|null="nombre";
   turno:boolean=false;
-  piezas:number=3;
+  piezas:number=14;
   piezaAnterior:Array<{x:string, y:string}>=[{x:'', y:''}];
   @Output() Listo = new EventEmitter<any>();
   ready:boolean=false;
@@ -40,7 +40,7 @@ export class TableroJugadorComponent implements OnInit {
           }
           this.channel.trigger('client-'+localStorage.getItem('partida'),{ jugador:localStorage.getItem('Apodo'), disparo:element.barco, px:value[0], py:value[1]});          
         }
-        if(this.piezas==3){
+        if(this.piezas==14){
           this.channel.trigger('client-'+localStorage.getItem('partida'),{ jugador:localStorage.getItem('Apodo'), fin:'ganaste'}); 
           alert('Perdiste');
           this.router.navigate(['/']);

@@ -1,3 +1,12 @@
+.hit{
+    background-color: red!important;
+}
+.miss{
+    background-color: black!important;
+}
+.estado{
+    color: aliceblue;
+}
 .letra{
     border-style: solid;
     display: inline-block;

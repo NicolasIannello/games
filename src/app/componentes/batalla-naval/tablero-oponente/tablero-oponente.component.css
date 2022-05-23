@@ -1,0 +1,90 @@
+.hit{
+    background-color: red!important;
+}
+.miss{
+    background-color: black!important;
+}
+.estado{
+    color: aliceblue;
+}
+.letra{
+    border-style: solid;
+    display: inline-block;
+    font-size: 2rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: rgb(187, 187, 187);
+    text-align: center;
+}
+.num{
+    border-style: solid;
+    display: inline-block;
+    font-size: 2rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: rgb(187, 187, 187);
+    text-align: center;
+}
+.botonTablero{
+    background-color: aqua;
+}
+.botonTablero:hover{
+    background-color: rgb(0, 163, 163);
+}
+.pieza{
+    background-color: rgb(97, 97, 97);
+    cursor:default;
+}
+button{
+    width: 4rem;
+    height: 4rem;
+}
+.jugador{
+    text-align: center;
+    font-size: 2rem;
+    color: aliceblue;
+}
+@media (max-width: 1405px) {
+    button {
+        width: 3rem;
+        height: 3rem;
+    }
+    .num{
+        font-size: 1rem;
+        width: 3rem;
+        height: 3rem;
+    }
+    .letra{
+        font-size: 1rem;
+        width: 3rem;
+        height: 3rem;
+    }
+}
+@media (max-width: 1000px) {
+    button {
+        width: 2rem;
+        height: 2rem;
+    }
+    .num{
+        width: 2rem;
+        height: 2rem;
+    }
+    .letra{
+        width: 2rem;
+        height: 2rem;
+    }
+}
+@media (max-width: 570px) {
+    button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .num{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    .letra{
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}

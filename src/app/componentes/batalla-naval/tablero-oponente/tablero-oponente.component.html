@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="jugador">{{nombreOponente}}</div>
+    <div class="estado">Estado: {{estadoOponente}}</div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">G</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='G'" (click)="fire(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">F</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='F'" (click)="fire(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">E</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='E'" (click)="fire(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">D</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='D'" (click)="fire(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">C</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='C'" (click)="fire(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">B</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='B'" (click)="fire(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">A</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='A'" (click)="fire(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">-</div><div class="num">1</div><div class="num">2</div><div class="num">3</div><div class="num">4</div><div class="num">5</div><div class="num">6</div><div class="num">7</div>
+        </div>
+    </div>
+</div>

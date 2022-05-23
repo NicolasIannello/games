@@ -1,7 +1,64 @@
 
 <div class="container">
     <div class="jugador">{{nombreJugador}}</div>
+    <div class="estado">Estado: {{ready}}</div>
     <div class="row">
+        <div class="col-sm">
+            <div class="letra">G</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='G'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">F</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='F'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">E</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='E'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">D</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='D'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">C</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='C'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">B</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='B'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="letra">A</div>
+            <span *ngFor="let n of tablero">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='A'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            </span>
+        </div>
+    </div>
+    <!--<div class="row">
         <div class="col-sm">
             <div class="letra">G</div>
             <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroG" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
@@ -43,6 +100,7 @@
             <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroA" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
         </div>
     </div>
+-->
     <div class="row">
         <div class="col-sm">
             <div class="letra">-</div><div class="num">1</div><div class="num">2</div><div class="num">3</div><div class="num">4</div><div class="num">5</div><div class="num">6</div><div class="num">7</div>

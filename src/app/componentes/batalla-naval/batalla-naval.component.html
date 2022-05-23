@@ -1,14 +1,17 @@
 <div class="titulo">
     <span>Batalla Naval</span>
 </div>
+<div class="id">
+    <span>ID de la partida: {{idPartida}}</span>
+</div>
 
 <div class="container">
     <div class="row">
         <div class="col-sm">
-            <app-tablero-jugador (Listo)="actualizarEstado($event)"></app-tablero-jugador>
+            <app-tablero-jugador (Listo)="actualizarEstado($event)" [posiciones]="posiciones"></app-tablero-jugador>
         </div>
         <div class="col-sm">
-            <app-tablero-oponente [Listo]="Listo"></app-tablero-oponente>
+            <app-tablero-oponente [Listo]="Listo" (posiciones)="enviarPosiciones($event)"></app-tablero-oponente>
         </div>
     </div>
 </div>

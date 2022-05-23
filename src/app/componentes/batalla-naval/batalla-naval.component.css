@@ -4,6 +4,7 @@
     font-size: 3rem;
     color: aliceblue;
 }
-span{
+.id{
     color: aliceblue;
+    text-align: center;
 }

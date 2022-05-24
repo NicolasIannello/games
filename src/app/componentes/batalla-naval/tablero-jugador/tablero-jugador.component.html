@@ -5,105 +5,69 @@
     <div class="row">
         <div class="col-sm">
             <div class="letra">G</div>
-            <span *ngFor="let n of tablero">
-                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='G'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            <span *ngFor="let n of tablero[6]">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" (click)="ponerPieza(n.x,n.y-1)" [disabled]="n.boton">{{letras[n.x]}}{{n.y}}</button>
             </span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm">
             <div class="letra">F</div>
-            <span *ngFor="let n of tablero">
-                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='F'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            <span *ngFor="let n of tablero[5]">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" (click)="ponerPieza(n.x,n.y-1)" [disabled]="n.boton">{{letras[n.x]}}{{n.y}}</button>
             </span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm">
             <div class="letra">E</div>
-            <span *ngFor="let n of tablero">
-                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='E'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            <span *ngFor="let n of tablero[4]">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" (click)="ponerPieza(n.x,n.y-1)" [disabled]="n.boton">{{letras[n.x]}}{{n.y}}</button>
             </span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm">
             <div class="letra">D</div>
-            <span *ngFor="let n of tablero">
-                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='D'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            <span *ngFor="let n of tablero[3]">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" (click)="ponerPieza(n.x,n.y-1)" [disabled]="n.boton">{{letras[n.x]}}{{n.y}}</button>
             </span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm">
             <div class="letra">C</div>
-            <span *ngFor="let n of tablero">
-                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='C'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            <span *ngFor="let n of tablero[2]">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" (click)="ponerPieza(n.x,n.y-1)" [disabled]="n.boton">{{letras[n.x]}}{{n.y}}</button>
             </span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm">
             <div class="letra">B</div>
-            <span *ngFor="let n of tablero">
-                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='B'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            <span *ngFor="let n of tablero[1]">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" (click)="ponerPieza(n.x,n.y-1)" [disabled]="n.boton">{{letras[n.x]}}{{n.y}}</button>
             </span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm">
             <div class="letra">A</div>
-            <span *ngFor="let n of tablero">
-                <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngIf="n.x=='A'" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
+            <span *ngFor="let n of tablero[0]">
+                <button id="{{n.x}}{{n.y}}" [class]="n.class" (click)="ponerPieza(n.x,n.y-1)" [disabled]="n.boton">{{letras[n.x]}}{{n.y}}</button>
             </span>
         </div>
     </div>
-    <!--<div class="row">
-        <div class="col-sm">
-            <div class="letra">G</div>
-            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroG" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="letra">F</div>
-            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroF" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="letra">E</div>
-            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroE" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="letra">D</div>
-            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroD" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="letra">C</div>
-            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroC" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="letra">B</div>
-            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroB" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm">
-            <div class="letra">A</div>
-            <button id="{{n.x}}{{n.y}}" [class]="n.class" *ngFor="let n of JtableroA" (click)="ponerPieza(n.x,n.y)" [disabled]="n.boton">{{n.x}}{{n.y}}</button>
-        </div>
-    </div>
--->
     <div class="row">
         <div class="col-sm">
             <div class="letra">-</div><div class="num">1</div><div class="num">2</div><div class="num">3</div><div class="num">4</div><div class="num">5</div><div class="num">6</div><div class="num">7</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm nota">
+            Debera colocar barcos de <span [class]="p5">5</span>, de <span [class]="p4">4</span>, de <span [class]="p3">3</span> y de <span [class]="p2">2</span> piezas.
+            <br>
+            No se pueden colocar barcos de manera diagonal.
         </div>
     </div>
 </div>

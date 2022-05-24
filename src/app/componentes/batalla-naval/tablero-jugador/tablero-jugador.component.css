@@ -33,7 +33,6 @@
 }
 .pieza{
     background-color: rgb(97, 97, 97);
-    cursor:default;
 }
 button{
     width: 4rem;
@@ -43,6 +42,20 @@ button{
     text-align: center;
     font-size: 2rem;
     color: aliceblue;
+}
+.nota{
+    color: aliceblue;
+    border: dotted;
+    border-color: aliceblue;
+    margin-top: 5%;
+    margin-right: 13%;
+    font-size: 1.4rem;
+}
+.red{
+    color:red;
+}
+.green{
+    color:green;
 }
 @media (max-width: 1405px) {
     button {

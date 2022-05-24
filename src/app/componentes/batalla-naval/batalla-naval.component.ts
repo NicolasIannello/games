@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class BatallaNavalComponent implements OnInit {
   Listo:boolean=false;
   idPartida:string|null='';
-  posiciones:Array<string>=[];
+  posiciones:Array<number>=[];
 
   constructor() { 
   }

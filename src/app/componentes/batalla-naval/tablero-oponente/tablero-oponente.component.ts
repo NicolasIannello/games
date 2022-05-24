@@ -75,7 +75,6 @@ export class TableroOponenteComponent implements OnInit {
         this.tablero[i][j]=casillero;
       }
     }
-    console.log(this.tablero);
     
     this.nombreOponente=localStorage.getItem('oponente');
   }

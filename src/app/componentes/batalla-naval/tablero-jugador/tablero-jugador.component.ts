@@ -71,7 +71,6 @@ export class TableroJugadorComponent implements OnInit {
   }
 
   ponerPieza(x:number, y:number){
-    this.p2='red', this.p3='red', this.p4='red', this.p5='red';
     
     if(this.piezas>0){
       if (this.tablero[x][y].barco==false){
@@ -105,6 +104,7 @@ export class TableroJugadorComponent implements OnInit {
   }
 
   verificarTablero(){
+    this.p2='red', this.p3='red', this.p4='red', this.p5='red';
     var respuesta=false, cont=0;
     
     this.tablero.forEach(element => {

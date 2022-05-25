@@ -90,6 +90,20 @@ button{
         height: 2rem;
     }
 }
+@media (max-width: 768px) {
+    button {
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+    .num{
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+    .letra{
+        width: 1.7rem;
+        height: 1.7rem;
+    }
+}
 @media (max-width: 570px) {
     button {
         width: 2.5rem;
@@ -102,5 +116,19 @@ button{
     .letra{
         width: 2.5rem;
         height: 2.5rem;
+    }
+}
+@media (max-width: 364px) {
+    button {
+        width: 2rem;
+        height: 2rem;
+    }
+    .num{
+        width: 2rem;
+        height: 2rem;
+    }
+    .letra{
+        width: 2rem;
+        height: 2rem;
     }
 }

@@ -17,7 +17,7 @@ const pusher = new Pusher({
   encrypted: true
 });
 
-app.use(express.static('./dist/'));
+app.use(express.static('./src/'));
 
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -36,7 +36,7 @@ app.post('/pusher/auth', function(req, res) {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './dist/index.html'));
+  res.sendFile(path.join(__dirname, './src/index.html'));
 });
 
 var port = process.env.PORT || 3000;

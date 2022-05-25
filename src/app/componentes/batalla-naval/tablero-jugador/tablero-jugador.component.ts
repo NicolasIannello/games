@@ -89,7 +89,7 @@ export class TableroJugadorComponent implements OnInit {
       this.tablero[x][y].class="botonTablero";
       this.piezas++; 
     }
-        
+    
     if (this.piezas==0) {
       if(this.verificarTablero()){
         for (let i = 0; i < this.tablero.length; i++) {

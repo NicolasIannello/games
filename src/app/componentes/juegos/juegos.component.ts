@@ -11,8 +11,8 @@ import { environment } from 'src/environments/environment';
 
 export class JuegosComponent implements OnInit {
 	rutaH:string='https://iannello-games.herokuapp.com/';
-	rutaÑ:string='http://localhost:3000/';
-	
+	rutaL:string='http://localhost:3000/';
+
 	juegos:Array<string>=['BatallaNaval','Soon!','Soon!','Soon!','Soon!','Soon!','Soon!'];
 	apodo:string='';
 	id:string='';

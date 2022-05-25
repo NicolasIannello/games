@@ -11,7 +11,7 @@ import { Tablero } from 'src/app/clases/tablero';
 })
 export class TableroOponenteComponent implements OnInit {
   rutaH:string='https://iannello-games.herokuapp.com/';
-	rutaÑ:string='http://localhost:3000/';
+	rutaL:string='http://localhost:3000/';
 
   letras:Array<string>=['A','B','C','D','E','F','G'];
   tablero:Tablero[][]=[];

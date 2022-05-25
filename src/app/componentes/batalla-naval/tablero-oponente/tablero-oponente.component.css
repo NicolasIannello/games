@@ -104,15 +104,15 @@ button{
 }
 @media (max-width: 364px) {
     button {
-        width: 2rem;
-        height: 2rem;
+        width: 2.4rem;
+        height: 2.4rem;
     }
     .num{
-        width: 2rem;
-        height: 2rem;
+        width: 2.4rem;
+        height: 2.4rem;
     }
     .letra{
-        width: 2rem;
-        height: 2rem;
+        width: 2.4rem;
+        height: 2.4rem;
     }
 }

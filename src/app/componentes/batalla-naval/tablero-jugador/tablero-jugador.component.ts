@@ -71,39 +71,80 @@ export class TableroJugadorComponent implements OnInit {
   }
 
   ponerPieza(x:number, y:number){
-     
-    if (this.tablero[x][y].barco==false){
-      this.tablero[x][y].barco=true;
-      this.tablero[x][y].class="pieza"; 
-      this.piezas--; 
-    }else{
+    this.p2='red', this.p3='red', this.p4='red', this.p5='red';
+    
+    if(this.piezas>0){
+      if (this.tablero[x][y].barco==false){
+        this.tablero[x][y].barco=true;
+        this.tablero[x][y].class="pieza"; 
+        this.piezas--; 
+      }else{
+        this.tablero[x][y].boton=false;
+        this.tablero[x][y].barco=false;
+        this.tablero[x][y].class="botonTablero";
+        this.piezas++; 
+      }
+    }else if(this.tablero[x][y].barco==true){
       this.tablero[x][y].boton=false;
       this.tablero[x][y].barco=false;
       this.tablero[x][y].class="botonTablero";
       this.piezas++; 
     }
-
+        
     if (this.piezas==0) {
-
       if(this.verificarTablero()){
         for (let i = 0; i < this.tablero.length; i++) {
           for (let j = 0; j < this.tablero[i].length; j++) {
-            this.tablero[i][j].boton=true
+            this.tablero[i][j].boton=true;
           }
         }
-      }else{
-
       }
-
       this.ready=true;
       this.Listo.emit(this.ready);
     }
   }
 
   verificarTablero(){
-    var respuesta=true;
+    var respuesta=false, cont=0;
+    
+    this.tablero.forEach(element => {
+      this.asignar(cont);
+      cont=0
+      for (let i=0; i<element.length; i++) {
+        if(element[i].barco==true){
+          cont++
+        }else{
+          this.asignar(cont);
+          cont=0;
+        }
+      }      
+    });
+
+    for (let i=0; i<this.tablero[0].length; i++) {
+      this.asignar(cont);
+      cont=0;
+      for (let j=0; j<this.tablero[0].length; j++) {
+        if(this.tablero[j][i].barco==true){
+          cont++
+        }else{
+          this.asignar(cont);
+          cont=0;
+        }
+      } 
+    }
+
+    if(this.p2=='green' && this.p3=='green' && this.p4=='green' && this.p5=='green') respuesta=true;
     
     return respuesta;
+  }
+
+  asignar(cont:number){
+    switch (cont){
+      case 2: if(this.p2=='red') this.p2='green'; break;
+      case 3: if(this.p3=='red') this.p3='green'; break;
+      case 4: if(this.p4=='red') this.p4='green'; break;
+      case 5: if(this.p5=='red') this.p5='green'; break;
+    }
   }
 
 }

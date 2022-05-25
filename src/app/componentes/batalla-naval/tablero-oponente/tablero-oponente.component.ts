@@ -10,6 +10,9 @@ import { Tablero } from 'src/app/clases/tablero';
   styleUrls: ['./tablero-oponente.component.css']
 })
 export class TableroOponenteComponent implements OnInit {
+  rutaH:string='https://iannello-games.herokuapp.com/';
+	rutaÑ:string='http://localhost:3000/';
+
   letras:Array<string>=['A','B','C','D','E','F','G'];
   tablero:Tablero[][]=[];
 
@@ -18,7 +21,7 @@ export class TableroOponenteComponent implements OnInit {
   estadoOponente:boolean=false;
 
   pusher:Pusher=new Pusher(environment.key, {
-    authEndpoint: 'http://localhost:3000/pusher/auth',
+    authEndpoint: this.rutaH+'pusher/auth',
     cluster: 'sa1'
   });
   channel:any;

@@ -17,7 +17,7 @@ const pusher = new Pusher({
   encrypted: true
 });
 
-app.use(express.static('./src/'));
+app.use(express.static(__dirname+'/dist/gamesFront'));
 
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -36,7 +36,7 @@ app.post('/pusher/auth', function(req, res) {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, './src/index.html'));
+  res.sendFile(path.join(__dirname, './dist/gamesFront/index.html'));
 });
 
 var port = process.env.PORT || 3000;

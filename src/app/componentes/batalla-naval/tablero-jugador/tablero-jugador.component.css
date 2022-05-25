@@ -57,6 +57,9 @@ button{
 .green{
     color:green;
 }
+.warning{
+    color:yellow
+}
 @media (max-width: 1405px) {
     button {
         width: 3rem;

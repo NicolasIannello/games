@@ -100,9 +100,9 @@ export class TableroJugadorComponent implements OnInit {
             this.tablero[i][j].boton=true;
           }
         }
+        this.ready=true;
+        this.Listo.emit(this.ready);
       }
-      this.ready=true;
-      this.Listo.emit(this.ready);
     }
   }
 
@@ -115,6 +115,7 @@ export class TableroJugadorComponent implements OnInit {
       cont=0
       for (let i=0; i<element.length; i++) {
         if(element[i].barco==true){
+          //console.log(element[i].x+''+element[i].y);
           cont++
         }else{
           this.asignar(cont);
@@ -122,12 +123,16 @@ export class TableroJugadorComponent implements OnInit {
         }
       }      
     });
-
+    this.asignar(cont);
+    cont=0;
+    
+    //console.log('2doLoop');
     for (let i=0; i<this.tablero[0].length; i++) {
       this.asignar(cont);
       cont=0;
       for (let j=0; j<this.tablero[0].length; j++) {
         if(this.tablero[j][i].barco==true){
+          //console.log(this.tablero[j][i].x+''+this.tablero[j][i].y);
           cont++
         }else{
           this.asignar(cont);
@@ -135,6 +140,7 @@ export class TableroJugadorComponent implements OnInit {
         }
       } 
     }
+    this.asignar(cont);
 
     if(this.p2=='green' && this.p3=='green' && this.p4=='green' && this.p5=='green') respuesta=true;
     
@@ -142,6 +148,8 @@ export class TableroJugadorComponent implements OnInit {
   }
 
   asignar(cont:number){
+    //console.log(cont);
+    
     switch (cont){
       case 2: if(this.p2=='red') this.p2='green'; break;
       case 3: if(this.p3=='red') this.p3='green'; break;

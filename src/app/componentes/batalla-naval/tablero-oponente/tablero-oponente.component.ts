@@ -74,7 +74,7 @@ export class TableroOponenteComponent implements OnInit {
     for (let i = 0; i < 7; i++) {
       this.tablero[i]=[];
       for (let j = 0; j < 7; j++) {
-        var casillero={x:i, y:(j+1), barco:false, hit:false, class:'botonTablero', boton:true};
+        var casillero={x:i, y:(j+1), barco:false, hit:false, class:'botonTablero', boton:true, loop:false};
         this.tablero[i][j]=casillero;
       }
     }

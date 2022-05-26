@@ -66,7 +66,7 @@ export class TableroJugadorComponent implements OnInit {
     for (let i = 0; i < 7; i++) {
       this.tablero[i]=[];
       for (let j = 0; j < 7; j++) {
-        var casillero={x:i, y:(j+1), barco:false, hit:false, class:'botonTablero', boton:false};
+        var casillero={x:i, y:(j+1), barco:false, hit:false, class:'botonTablero', boton:false, loop:false};
         this.tablero[i][j]=casillero;
       }
     }
@@ -108,54 +108,89 @@ export class TableroJugadorComponent implements OnInit {
 
   verificarTablero(){
     this.p2='red', this.p3='red', this.p4='red', this.p5='red';
-    var respuesta=false, cont=0;
-    
-    this.tablero.forEach(element => {
-      this.asignar(cont);
-      cont=0
-      for (let i=0; i<element.length; i++) {
-        if(element[i].barco==true){
-          //console.log(element[i].x+''+element[i].y);
-          cont++
-        }else{
-          this.asignar(cont);
-          cont=0;
-        }
-      }      
-    });
-    this.asignar(cont);
-    cont=0;
-    
-    //console.log('2doLoop');
-    for (let i=0; i<this.tablero[0].length; i++) {
-      this.asignar(cont);
-      cont=0;
-      for (let j=0; j<this.tablero[0].length; j++) {
-        if(this.tablero[j][i].barco==true){
-          //console.log(this.tablero[j][i].x+''+this.tablero[j][i].y);
-          cont++
-        }else{
-          this.asignar(cont);
-          cont=0;
-        }
-      } 
-    }
-    this.asignar(cont);
+    var respuesta=false, cont=0, i=0;
 
-    if(this.p2=='green' && this.p3=='green' && this.p4=='green' && this.p5=='green') respuesta=true;
+    for (let i = 0; i < this.tablero.length; i++) {
+      for (let j = 0; j < this.tablero[i].length; j++) {
+        this.tablero[i][j].loop=false;
+      }
+    }
+
+    this.verificacionH();
+    this.verificacionV();
+
+    if(this.p2=='green' && this.p3=='green' && this.p4=='green' && this.p5=='green'){
+      respuesta=true;
+    }else{
+      this.p2='red', this.p3='red', this.p4='red', this.p5='red';
+
+      for (let i = 0; i < this.tablero.length; i++) {
+        for (let j = 0; j < this.tablero[i].length; j++) {
+          this.tablero[i][j].loop=false;
+        }
+      }
+
+      this.verificacionV();
+      this.verificacionH();
+
+      if(this.p2=='green' && this.p3=='green' && this.p4=='green' && this.p5=='green') respuesta=true;
+    } 
     
     return respuesta;
   }
 
-  asignar(cont:number){
-    //console.log(cont);
+  asignar(cont:number, x:number, y:number, dir:string){
+    var loop=false;
     
     switch (cont){
-      case 2: if(this.p2=='red') this.p2='green'; break;
-      case 3: if(this.p3=='red') this.p3='green'; break;
-      case 4: if(this.p4=='red') this.p4='green'; break;
-      case 5: if(this.p5=='red') this.p5='green'; break;
+      case 2: if(this.p2=='red') this.p2='green'; loop=true; break;
+      case 3: if(this.p3=='red') this.p3='green'; loop=true; break;
+      case 4: if(this.p4=='red') this.p4='green'; loop=true; break;
+      case 5: if(this.p5=='red') this.p5='green'; loop=true; break;
+    }
+
+    if(loop==true){
+      for (let i=cont; i>0; i--) {
+        if(dir=='v'){
+          this.tablero[x-i][y].loop=true;
+        }else{
+          this.tablero[x][y-i].loop=true;
+        }
+      }
     }
   }
 
+  verificacionH(){
+    var cont=0, i=0, j=0;
+
+    for (i=0; i<this.tablero[0].length; i++) {
+      cont=0;
+      for (j=0; j<this.tablero[0].length; j++) {
+        if(this.tablero[i][j].barco==true && this.tablero[i][j].loop==false){
+          cont++
+        }else{
+          this.asignar(cont,i,j,'h');
+          cont=0;
+        }
+      } 
+      this.asignar(cont,i,j,'h');
+    }
+  }
+
+  verificacionV(){
+    var cont=0, i=0, j=0;
+
+    for (i=0; i<this.tablero[0].length; i++) {
+      cont=0;
+      for (j=0; j<this.tablero[0].length; j++) {
+        if(this.tablero[j][i].barco==true && this.tablero[j][i].loop==false){
+          cont++
+        }else{
+          this.asignar(cont,j,i,'v');
+          cont=0;
+        }
+      } 
+      this.asignar(cont,j,i,'v');
+    }
+  }
 }

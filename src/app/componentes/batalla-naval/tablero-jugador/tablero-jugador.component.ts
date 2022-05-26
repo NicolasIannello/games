@@ -19,6 +19,7 @@ export class TableroJugadorComponent implements OnInit {
   nombreJugador:string|null="nombre";
   turno:boolean=false;
 
+  barcos:Array<{x:number,y:number,check:boolean}>=[];
   piezas:number=14;
   @Output() Listo = new EventEmitter<any>();
   ready:boolean=false;
@@ -77,6 +78,7 @@ export class TableroJugadorComponent implements OnInit {
     
     if(this.piezas>0){
       if (this.tablero[x][y].barco==false){
+        this.barcos.push({x:x,y:y,check:false});
         this.tablero[x][y].barco=true;
         this.tablero[x][y].class="pieza"; 
         this.piezas--; 
@@ -94,7 +96,7 @@ export class TableroJugadorComponent implements OnInit {
     }
     
     if (this.piezas==0) {
-      if(this.verificarTablero()){
+      if(/*this.verificarTablero() ||*/ this.verificarPiezas()){
         for (let i = 0; i < this.tablero.length; i++) {
           for (let j = 0; j < this.tablero[i].length; j++) {
             this.tablero[i][j].boton=true;
@@ -104,6 +106,17 @@ export class TableroJugadorComponent implements OnInit {
         this.Listo.emit(this.ready);
       }
     }
+  }
+
+  verificarPiezas(){
+    var respuesta=false, cont=0;
+    var barcosh= this.barcos.sort((obj,obj2)=>obj.x-obj2.x);
+    var barcosv= this.barcos.sort((obj,obj2)=>obj.y-obj2.y);
+
+    console.log(barcosh);
+    console.log(barcosv);
+    
+    return respuesta;
   }
 
   verificarTablero(){

@@ -5,4 +5,5 @@ export class Tablero {
     hit:boolean=false;
     class:string='botonTablero';
     boton:boolean=false;
+    loop:boolean=false;
 }
